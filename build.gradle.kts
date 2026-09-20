@@ -1,8 +1,13 @@
 plugins {
-    id("java")
+    application
+    id("com.gradleup.shadow") version "9.5.0"
 }
 
-group = "org.example"
+application {
+    mainClass.set("com.mihastele.core.FileIntegrityMonitor")
+}
+
+group = "com.mihastele"
 version = "1.0-SNAPSHOT"
 
 repositories {

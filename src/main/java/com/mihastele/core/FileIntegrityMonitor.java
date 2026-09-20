@@ -86,7 +86,7 @@ public class FileIntegrityMonitor {
         try (Stream<Path> stream = Files.walk(root)) {
             List<Path> files = stream
                     .filter(Files::isRegularFile)
-                    .filter(p -> p.toAbsolutePath().normalize().equals(baseline))
+                    .filter(p -> !p.toAbsolutePath().normalize().equals(baseline))
                     .toList();
 
             for (Path file : files) {
