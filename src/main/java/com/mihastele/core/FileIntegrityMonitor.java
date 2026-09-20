@@ -64,7 +64,14 @@ public class FileIntegrityMonitor {
                 System.out.println("ADDED " + path);
                 added++;
             }
-            if (!oldHashes.get(path).equals(newHashes.get(path))) {
+
+            String oldHash = oldHashes.get(path);
+            String newHash = newHashes.get(path);
+            if (oldHash == null || newHash == null) {
+                System.out.println("LOG: One of the hashes is missing, either the file did not exist in the old hasing, or it has been deleted.");
+                continue;
+            }
+            if (!oldHash.equals(newHash)) {
                 System.out.println("MODIFIED " + path);
                 modified++;
             }
